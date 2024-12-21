@@ -190,10 +190,6 @@ def selfTuning(factor,anomaly_scores_in_normal):
     :param anomaly_scores_in_normal: Anomaly scores produced from normal data
     :return: threshold value
     """
-    if len(anomaly_scores_in_normal)==0:
-        if len(anomaly_scores)<sizeOfReference:
-            return False,max(anomaly_scores) # not enough data to calculate threshold using the parameters.
-        anomaly_scores_in_normal=anomaly_scores[:sizeOfReference]
     th = statistics.mean(anomaly_scores_in_normal) + factor * statistics.stdev(anomaly_scores_in_normal)
     return th
 
